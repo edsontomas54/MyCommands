@@ -1,0 +1,192 @@
+===========================================GIT COMMDS====================================================
+
+============================
+=====to checkout the the ssh key
+
+s -al ~/. ssh.
+
+======public
+ls -l ~/.ssh/id_*.pub
+
+================generate
+ssh-keygen -t rsa -b 4096 -C "samreena_email@yahoo.com"
+
+or
+ssh-keygen
+===========coping a ssh public key===
+cat ~/.ssh/id_rsa.pub
+====================
+começando o git
+
+primeiro configurar o git: 
+
+nota: "tens que ter uma conta no github"
+
+1-git config --global user.name “coloque o seu user do git” depois enter
+2-git config --global user.email “colocar o seu email da conta.” enter
+====================================================================
+
+ja no local do seu projecto que pretende mandar para o git, de os seguintes comandos para poder mandar o seu projecto
+====>>>
+1-git init enter
+2-git status enter
+
+"depois de executar o git status, poderas ver os files que estao disponiveis no projecto"
+"outra: a fiture granch default e o main, mais nesse caso estara o master"
+	
+3-git add . enter "este comando possibilita a mandar todos os files de uma e unica vez"
+4-git add copie o file que pretende adicionar e cole aqui e depois enter.
+5-git commit -m "a messagem que pretende ter esse commit"
+ "nota: agora pretende se recaminhar o projecto para o git, primairamente vai ter que logar no github e depois criar um repositorio que pretende
+colocar o seu projecto.
+-> ir ate repositore, depois clicar no new, e depois colocar o nome no repositorio ao seu favor,colocar a descrição se tiver
+escolher se quer que seje privado ou publico, addicionar se quiser o file read me, ecolher a linceça MIT Licença, e depois crear o repo..
+-> ir ate o repo.. criado no code copie o caminho para colocar os seus files la.
+"
+ja criado o repo...
+
+6-git remote add origin cole o caminho copiado.
+7-git push origin master/ou a fiture bransh 
+or  git push --set-upstream origin <bransh>
+
+=================================branchies
+
+git checkout =>  you can switch between these branches using git checkout. To find out what branches are available and what the current branch name is
+
+new branch,
+
+git checkout -b ＜new-branch＞
+
+Switching Branches=====><>
+git checkout ＜branchname＞
+
+
+Usage: Existing branches===>
+ex:::
+run: git branch
+output: all brachs
+main 
+another_branch 
+feature_inprogress_branch 
+--to switch between
+
+git checkout feature_inprogress_branch,,
+
+
+============Git Checkout a Remote Branch===><>
+
+git fetch --all
+
+you can learn more about it on the following url: https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
+
+thanks for watching! *kkkkkkkkk I'm killing lol*
+
+
+Git commands
+
+---git status  ->para ver o estado
+
+---git diif caminho -> pra ver a diferensa do que foi mudado
+
+----git stash ->para esconder ou ignorar as modificaçoes feitas
+
+-----git pull --rebase/reb para carecar todas as modificações e inserir da branch no git
+
+----git stash pop -> tornar vesivel dodas as modificações
+
+--- git log -> para ver os status do repositorio remoto
+
+=============================================================================================branches======================
+
+See What Branch You're On
+Run this command: 
+
+ git status
+ 
+List All Branches
+NOTE: The current local branch will be marked with an asterisk (*).
+
+To see local branches, run this command:
+git branch
+
+
+To see remote branches, run this command:
+git branch -r
+
+
+To see all local and remote branches, run this command:
+git branch -a
+
+Create a New Branch
+Run this command (replacing my-branch-name with whatever name you want):
+git checkout -b my-branch-name
+You're now ready to commit to this branch.
+
+
+
+Switch to a Branch In Your Local Repo
+Run this command:
+git checkout my-branch-name
+
+
+Switch to a Branch That Came From a Remote Repo
+To get a list of all branches from the remote, run this command:
+git pull
+Run this command to switch to the branch:
+git checkout --track origin/my-branch-name
+
+
+
+Push to a Branch
+If your local branch does not exist on the remote, run either of these commands:
+git push -u origin my-branch-name
+git push -u origin HEAD,
+
+NOTE: HEAD is a reference to the top of the current branch, 
+so it's an easy way to push to a branch of the same name on the remote. 
+This saves you from having to type out the exact name of the branch!
+
+
+
+If your local branch already exists on the remote, run this command:
+git push
+
+
+Merge a Branch
+
+You'll want to make sure your working tree is clean and see what branch you're on.
+
+ Run this command:
+git status
+
+
+First, you must check out the branch that you want to merge another branch into 
+(changes will be merged into this branch). If you're not already on the desired 
+branch, run this command:
+
+git checkout master
+NOTE: Replace master with another branch name as needed.
+
+
+git checkout master
+NOTE: Replace master with another branch name as needed.
+
+git merge my-branch-name
+NOTE: When you merge, there may be a conflict. Refer to Handling Merge Conflicts (the next exercise) to learn what to do.
+
+
+Delete Branches
+
+To delete a remote branch, run this command:
+git push origin --delete my-branch-name
+
+
+To delete a local branch, run either of these commands:
+git branch -d my-branch-name
+git branch -D my-branch-name
+
+NOTE: The -d option only deletes the branch if it has already been merged. 
+The -D option is a shortcut for --delete --force, which deletes the branch irrespective of
+ its merged status.
+
+
