@@ -1,0 +1,103 @@
+					<Como prosseguir>
+Primairamente siga a ficha de apoio
+-----------------------------------[1 - Instalar Recursos ]------------------------------------
+Entre no seu navegador 
+
+		< Intale google chrome >
+		 
+-> wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+-> sudo apt install ./google-chrome-stable_current_amd64.deb
+
+Abra o terminal e digite esse comando:
+
+-> sudo su {Nao Esqueca desse comando NUNCA}
+-> sudo apt update
+
+		< Instale Java 8 >
+		
+-> java -version
+-> sudo add-apt-repository ppa:openjdk-r/ppa
+-> sudo apt-get update
+-> sudo apt-get install openjdk-8-jdk
+
+		< Instale Maven 3.6.8 >
+		
+-> mvn -version
+
+
+		<Instale Tomcat>
+-> cd /opt/ 
+-> wget https://mirrors.sonic.net/apache/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.tar.gz
+-> tar -xvf apache-tomcat-9.0.68.tar.gz
+-> mv apache-tomcat-9.0.68 tomcat9
+-> nano ~/.bashrc
+-> Escreva : export CATALINA_HOME=/opt/tomcat9, pressione crtl x, depois ENTER
+-> source ~/.bashrc
+
+		< Instale Mysql 5.5 ou 5.6 >
+
+-> Link no zimbra
+* Qundo chegares no passo 10 execute o comando e em seguida execute
+-> sudo apt-get install ia32-libs, depois
+# caso seu computador seja 32bits execute:
+-> sudo apt-get install libncurses5:i386
+# caso seu computador seja 64bits execute:
+-> sudo apt-get install libncurses5
+
+* No passo 16 
+-> sudo bin/mysqladmin -u root password 'Sua Password'
+
+		< instale git >
+		
+-> sudo apt install git
+Em seguinda clone os projectos do repositorio
+
+		< Baixe a base de dados mais recente >
+		
+-> sftp dsedev@192.168.0.169
+-> Password : devs#LimeAA1989
+-> cd /var/backups/ambientes/fenix/fenix-isutc-p/
+-> ls
+-> get "Nome da base de dados"
+
+
+		<Comentar ldap>
+		
+va so projecto spring-bean-config.xlm e comente 
+
+<!-- <import resource="ldap-core-config.xml"/> -->
+
+
+		
+		<Configurar a base de dados NO fenix-webb-app >
+		
+-> Coloque a bases de dados e sua senha da base de dados no fenix-framework 
+-> addicione cad.at3.article=CAD no spring bean do webb-app
+
+
+#============================================Mysql Services ============================
+sudo service mysql stop
+
+sudo service mysql start
+
+
+sudo service mysql restart
+
+sudo service mysql status
+
+===============
+#===============================================Xampp Services===============================
+
+
+installation link:
+https://linuxhint.com/install-xampp-ubuntu-20-04/
+================
+sudo /opt/lampp/lampp start
+
+======to start the xampp manager
+sudo /opt/lampp/manager-linux-x64.run
+==================
+sudo /opt/lampp/lampp stop
+============================Vscode=================================
+
+sudo snap install --classic code
