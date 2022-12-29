@@ -98,6 +98,16 @@ sudo /opt/lampp/lampp start
 sudo /opt/lampp/manager-linux-x64.run
 ==================
 sudo /opt/lampp/lampp stop
+============================PHP apache2
+--to restart
+/etc/init.d/apache2 restart
+-- to stop
+/etc/init.d/apache2 stop
+--to start
+/etc/init.d/apache2 start
+
+for more datails https://www.cyberciti.biz/faq/star-stop-restart-apache2-webserver/
+
 ============================Vscode=================================
 
 sudo snap install --classic code
