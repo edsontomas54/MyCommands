@@ -96,6 +96,8 @@ Git commands
 
 --- git log -> para ver os status do repositorio remoto
 
+--- git config core.filemode false -> to not show unstashed changes, as old mode or new mode
+
 =============================================================================================branches======================
 
 See What Branch You're On
