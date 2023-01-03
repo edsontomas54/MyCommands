@@ -212,5 +212,11 @@ To delete configuration and/or data files of git and it's dependencies from Ubun
 ```
 $ sudo apt-get purge --auto-remove git
 ```
+============To edit a pushed last commit run with project opened on VScode
+git commit --amend
+then edit the test on vscode and clone the edition,
+then push to remote forcing it
+git push -f origin master
+
 
 
