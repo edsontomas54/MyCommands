@@ -183,3 +183,13 @@ Step 5: Check Swap is disabled
 sudo swapon --show
 
 free -h
+
+
+
+
+1:Remove the PPA
+
+sudo add-apt-repository --remove ppa:ehoover/compholio
+
+2:Update the repository list:
+sudo apt update
