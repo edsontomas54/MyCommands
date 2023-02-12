@@ -193,3 +193,19 @@ sudo add-apt-repository --remove ppa:ehoover/compholio
 
 2:Update the repository list:
 sudo apt update
+
+
+change the keyboard on ubuntu
+
+setxkbmap -layout us
+or 
+loadkeys us
+
+others:
+
+For those not using XWindows, e.g. Ubuntu server, setxkbmap won't work. Use
+
+sudo apt-get install console-common
+Or if it is already installed:
+
+sudo dpkg-reconfigure console-data
