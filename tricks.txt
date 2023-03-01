@@ -1,0 +1,2 @@
+creat a new folder then press alt in the same time write 255 then hit enter =>this will create a folter without name
+then go to options of the folter change the icon put the blank icon=> the folder will no have the name and will not be visible
