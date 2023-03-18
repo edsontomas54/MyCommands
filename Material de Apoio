@@ -209,3 +209,20 @@ sudo apt-get install console-common
 Or if it is already installed:
 
 sudo dpkg-reconfigure console-data
+
+
+
+ para abrir o eclipse no terminal,
+ 
+ -navegue ate a pasta do eclipse e execute ./eclipse
+ vai levantar o eclipse, para nao poder ir ate o directorio devera adicionar na path:
+  nano /etc/environment:
+    PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:
+  depois coloque a path do eclipe,
+			
+  /usr/local/games:/home/edson/eclipse/jee-2022-09/eclipse"
+ 
+ 
+ EX: 
+ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:  /usr/local/games:/home/edson/eclipse/jee-2022-09/eclipse"
+
