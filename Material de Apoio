@@ -34,46 +34,12 @@ Abra o terminal e digite esse comando:
 -> Escreva : export CATALINA_HOME=/opt/tomcat9, pressione crtl x, depois ENTER
 -> source ~/.bashrc
 
-		< Instale Mysql 5.5 ou 5.6 >
-
--> Link no zimbra
-* Qundo chegares no passo 10 execute o comando e em seguida execute
--> sudo apt-get install ia32-libs, depois
-# caso seu computador seja 32bits execute:
--> sudo apt-get install libncurses5:i386
-# caso seu computador seja 64bits execute:
--> sudo apt-get install libncurses5
-
-* No passo 16 
--> sudo bin/mysqladmin -u root password 'Sua Password'
-
 		< instale git >
 		
 -> sudo apt install git
 Em seguinda clone os projectos do repositorio
 
 		< Baixe a base de dados mais recente >
-	
-		
--> sftp dsedev@192.168.0.169
--> Password : devs#LimeAA1989
--> cd /var/backups/ambientes/fenix/fenix-isutc-p/
--> ls
--> get "Nome da base de dados"
-
-
-		<Comentar ldap>
-		
-va so projecto spring-bean-config.xlm e comente 
-
-<!-- <import resource="ldap-core-config.xml"/> -->
-
-
-		
-		<Configurar a base de dados NO fenix-webb-app >
-		
--> Coloque a bases de dados e sua senha da base de dados no fenix-framework 
--> addicione cad.at3.article=CAD no spring bean do webb-app
 
 
 #============================================Mysql Services ============================
