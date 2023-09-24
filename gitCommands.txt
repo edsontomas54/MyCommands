@@ -219,4 +219,47 @@ then push to remote forcing it
 git push -f origin master
 
 
+===================GIT SUBMODULE===========>>>>>
 
+
+If you want to keep your frontend and backend repositories separate from each other but still have them together in a single parent repository, you can use a Git feature called submodules.
+
+
+Create a Parent Repository:
+
+
+Create a new repository on GitHub. This will be your parent repository.
+Add Submodules:
+
+
+Inside your parent repository, you can add the frontend and backend repositories as submodules. This means they will be included in your parent repository as separate entities.
+For example, if your frontend and backend repositories are hosted on GitHub:
+
+git submodule init
+
+git submodule add https://github.com/username/frontend.git frontend
+git submodule add https://github.com/username/backend.git backend
+
+
+git commit -m " submodule  commit"
+git branch -M main
+git push -u origin main
+
+This will add the frontend and backend repositories as submodules in your parent repository.
+
+Cloning with Submodules:
+
+When you clone the parent repository, you'll need to use the --recursive flag to also clone the submodules:
+
+git clone --recursive https://github.com/username/parent.git
+Updating Submodules:
+
+If you make changes in the frontend or backend repositories, you'll need to commit and push those changes in their respective repositories. Then, in the parent repository, you can update the submodules:
+bash
+Copy code
+git submodule update --remote
+This will pull the latest changes from the submodules.
+
+Keep in mind that using submodules adds some complexity to your repository management, so make sure you understand how they work and their implications before implementing them in your project.
+
+This way, you'll have a parent repository that contains references to the frontend and backend repositories, but they remain separate entities with their own version control history.
