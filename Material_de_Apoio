@@ -300,3 +300,10 @@ granting the remote acess on database mysql
 1.CREATE USER 'newusername'@'192.168.8.110' IDENTIFIED BY 'newuserpassword';
 2.GRANT SELECT, INSERT, UPDATE, DELETE ON database_name.* TO 'newusername'@'192.168.8.110';
 3. FLUSH PRIVILEGES;
+
+
+
+===================>>>>>
+
+google emails
+ https://myaccount.google.com/apppasswords.
