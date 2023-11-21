@@ -307,3 +307,30 @@ granting the remote acess on database mysql
 
 google emails
  https://myaccount.google.com/apppasswords.
+
+
+
+
+track
+
+<p>
+    As tags foram atualizadas para:
+    <span class="fa fa-arrow-right"></span>
+    <t t-foreach="object.tag_ids" t-as="tag">
+        <t t-out="tag.name"/>
+        <t t-if="not tag==object.tag_ids[-1]">, </t>
+    </t>
+    <t t-if="not object.tag_ids">Removidas</t>
+</p>
+
+
+
+
+
+
+
+<p>
+    The Name field was updated to:
+    <span class="fa fa-arrow-right"></span>
+            <t t-out="object.name or 'Removed' "/>
+</p>
