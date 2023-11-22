@@ -1,0 +1,23 @@
+docker---
+
+pull mysql image that u want, 
+
+ex:
+docker pull mysql:5.5
+
+then setup the password
+
+docker run --name mysql5.5 -e MYSQL_ROOT_PASSWORD='password' -p 3307:3306 -d mysql:5.5
+the -d -> toched and run in  background
+u can change the ports here -p 3307:3306
+
+now 
+to stop it run 
+docker stop mysqlName 
+ex: docker stop mysql5.5 or start
+
+to log in mysql just run
+mysql -h 127.0.0.1 -P 3307 -u root -p
+put your password then phaaaaaa!
+
+if u have more that one mysql just switch using the port:
