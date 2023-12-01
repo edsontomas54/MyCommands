@@ -334,3 +334,8 @@ track
     <span class="fa fa-arrow-right"></span>
             <t t-out="object.name or 'Removed' "/>
 </p>
+
+
+sudo usermod -aG docker ${USER}
+
+then: su - ${USER}
