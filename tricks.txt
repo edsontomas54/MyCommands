@@ -19,3 +19,57 @@ This command grants read and write permissions to the owner (your user).
 Now, your user should have the necessary permissions to modify files in your project without using sudo. If you encounter any issues related to permissions, you can address them by adjusting the ownership and permissions accordingly.
 
 Keep in mind that modifying permissions and ownership should be done cautiously, especially on system-critical files. Only apply these changes to directories where it's necessary for your development work.
+
+
+Ports===================>>>>
+
+To see a list of all open ports on your Ubuntu system, you can use the netstat or ss command. Both commands are used to display network-related information. Here are some examples:
+
+Using netstat:
+sudo netstat -tulpn
+This command will display a list of all listening and established connections, along with the associated processes and their process IDs. It provides information about both TCP and UDP ports.
+
+Using ss (socket statistics):
+sudo ss -tulpn
+Similar to netstat, the ss command shows socket statistics, including TCP, UDP, and UNIX sockets, along with the associated processes.
+
+Using lsof (list open files):
+
+sudo lsof -i -P -n | grep LISTEN
+This command lists all open files (including network sockets) and filters the output to show only listening ports.
+
+Using nmap (Network Mapper):
+
+sudo nmap -p- localhost
+This command will perform a port scan on the localhost, showing all open ports. Note that nmap might not be installed by default, so you may need to install it using:
+
+
+sudo apt-get install nmap
+Choose the method that best suits your needs. The netstat and ss commands provide more detailed information about open ports and associated processes, while nmap can be used for a more comprehensive network scan.
+
+User
+if u stoped the php artisan serve, but this still running tcp       LISTEN     0           4096                 127.0.0.1:8000                 0.0.0.0:*         users:(("php8.1",pid=41094,fd=6))             
+
+
+Kill the Process:
+You can use the kill command to terminate the process associated with port 8000. In your case, the process ID is 41094. Run the following command:
+
+sudo kill -9 41094
+Replace 41094 with the actual process ID.
+
+Check Again:
+After killing the process, check if the port is still listed as listening:
+
+sudo netstat -tulpn | grep 8000
+If it's no longer listed, the issue is resolved.
+
+Wait for Port Release:
+Sometimes, it might take a moment for the operating system to release the port after the process is terminated. Try waiting for a minute and then check again.
+
+Use a Different Port:
+If the issue persists, consider using a different port for your Laravel application. Update your Laravel application's configuration to use a different port, and then restart the php artisan serve command.
+
+php artisan serve --port=your_preferred_port
+Replace your_preferred_port with the desired port number.
+
+By following these steps, you should be able to resolve the issue of the port 8000 still being listed as listening even after stopping the php artisan serve command.
