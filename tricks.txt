@@ -1,2 +1,21 @@
 creat a new folder then press alt in the same time write 255 then hit enter =>this will create a folter without name
 then go to options of the folter change the icon put the blank icon=> the folder will no have the name and will not be visible
+
+
+===============>>>> change premissons
+
+Change Ownership:
+Open a terminal and navigate to your project directory. Run the following command to change the ownership of the project files to your user:
+bash***
+sudo chown -R your_username:your_username /path/to/your/project
+
+Change Permissions:
+If necessary, you might also need to adjust the file permissions. Run the following command to give your user read and write permissions:
+
+bash**
+chmod -R u+rw /path/to/your/project
+This command grants read and write permissions to the owner (your user).
+
+Now, your user should have the necessary permissions to modify files in your project without using sudo. If you encounter any issues related to permissions, you can address them by adjusting the ownership and permissions accordingly.
+
+Keep in mind that modifying permissions and ownership should be done cautiously, especially on system-critical files. Only apply these changes to directories where it's necessary for your development work.
