@@ -73,3 +73,8 @@ php artisan serve --port=your_preferred_port
 Replace your_preferred_port with the desired port number.
 
 By following these steps, you should be able to resolve the issue of the port 8000 still being listed as listening even after stopping the php artisan serve command.
+
+flutter installing=====>>>>>
+nano ~/.bashrc 
+export PATH="$PATH:/snap/bin/flutter/bin"
+ source ~/.bashrc 
