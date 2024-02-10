@@ -1,6 +1,39 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Larvel Logo"></a></p>
 
+### SSH AUTH
+```sh
+nano /etc/ssh/sshd_config
 
+Find the line that says PasswordAuthentication and change its value to 'yes'.
+Then restart the SSH service by running:
+
+sudo systemctl restart sshd
+
+Then add a user:
+sudo adduser your_username
+
+sudo passwd your_username
+
+Add the user to the sudo group: Run the following command to add the user
+
+sudo usermod -aG sudo your_username
+
+Verify sudo access: 
+
+sudo su - admin_dev
+sudo ls /root
+
+If the user is able to list the contents of the /root directory without any permission denied errors, 
+then sudo access has been successfully granted.
+
+Test sudo access: You can also try running other commands with 
+sudo to ensure the user can execute administrative tasks:
+
+sudo apt update
+
+to acess: ssh your_username@your_server_ip
+
+```
 ### INSTALANDO DEPENDENCIAS
 
 ```sh
