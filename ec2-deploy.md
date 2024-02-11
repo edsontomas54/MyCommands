@@ -105,6 +105,11 @@ nano .env
 composer install --optimize-autoloader --no-dev
 sudo chmod -R 777 storage
 sudo chmod -R 777 bootstrap
+sudo chown -R www-data:www-data /var/www/e-Commerce-Laravel/public/assets/imgs/ #this will allow the user upload the files...
+
+if necessary:
+sudo chmod -R 755 /var/www/e-Commerce-Laravel/public/assets/imgs/
+
 php artisan migrate
 php artisan key:generate
 
