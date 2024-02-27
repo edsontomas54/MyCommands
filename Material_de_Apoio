@@ -349,3 +349,8 @@ Install PHP 7.4
 https://linux.how2shout.com/how-to-install-php-7-4-on-ubuntu-22-04-lts-jammy-linux/
 
 mysqldump -u my_username -p database_name > output_file_path
+
+
+
+//ex: on bin
+ln -s /home/edsondev/Commands/mysql8.1.sh /usr/bin/mysql8.1
