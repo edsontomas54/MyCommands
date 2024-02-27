@@ -344,3 +344,6 @@ to get the alternatives versions:
 
  update-alternatives --config php
 
+
+
+mysqldump -u my_username -p database_name > output_file_path
