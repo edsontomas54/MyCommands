@@ -344,6 +344,8 @@ to get the alternatives versions:
 
  update-alternatives --config php
 
+Install PHP 7.4
 
+https://linux.how2shout.com/how-to-install-php-7-4-on-ubuntu-22-04-lts-jammy-linux/
 
 mysqldump -u my_username -p database_name > output_file_path
