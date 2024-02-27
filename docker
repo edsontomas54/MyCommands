@@ -117,3 +117,7 @@ for more information on what might be going wrong.
 
 
 
+ex: on bin
+ln -s /home/edsondev/Commands/mysql8.1.sh /usr/bin/mysql8.1
+
+
