@@ -339,3 +339,8 @@ track
 sudo usermod -aG docker ${USER}
 
 then: su - ${USER}
+
+to get the alternatives versions:
+
+ update-alternatives --config php
+
