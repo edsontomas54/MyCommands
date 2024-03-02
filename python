@@ -1,0 +1,48 @@
+Once you're in the desired directory, run the following command to create a new virtual environment:
+ apt install python3.10-venv
+
+python3 -m venv myenv
+Replace myenv with the name you want to give to your virtual environment. This command will create a new directory called myenv in the current directory, which will contain the virtual environment.
+
+Activate the virtual environment by running the activation script. In the terminal, execute:
+bash
+
+source myenv/bin/activate
+After activation, you'll notice that the prompt in your terminal changes, indicating that you're now working within the virtual environment.
+
+You can now install packages and run Python scripts within this virtual environment without affecting the system-wide Python installation. For example, you can use pip to install packages:
+
+pip install package_name
+To deactivate the virtual environment and return to the global Python environment, simply execute:
+Copy code
+deactivate
+
+
+=====================================
+
+
+pip install -r requirements
+
+#active the enviroment
+source /env/bin/activete
+
+deactivate
+
+tailwind watch:
+npx tailwindcss -i static/css/main.css -o static/css/main.min.css --watch
+
+to run the app: 
+
+python manage.py runserver
+
+to make a migration:
+python manage.py makemigrations
+
+to run migration
+
+ install to migrate: apt install python3-migrate then run
+ python manage.py migrate
+
+
+ to create a app in django
+ python manage.py startapp chat
