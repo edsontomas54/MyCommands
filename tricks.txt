@@ -78,3 +78,76 @@ flutter installing=====>>>>>
 nano ~/.bashrc 
 export PATH="$PATH:/snap/bin/flutter/bin"
  source ~/.bashrc 
+
+
+
+
+=======================Cresting a SFTP Script ======================
+create a file .sh
+#!/bin/bash
+
+# Function to execute commands via SFTP
+execute_sftp_commands() {
+    # Login to the SFTP server
+    echo "Logging in to SFTP server..."
+    expect -c "
+    spawn sftp dsedev@192.168.0.169
+    expect \"Password:\"
+    send \"devs#LimeAA1989\r\"
+    expect \"sftp>\"
+    send \"cd /var/backups/ambientes/fenix/fenix-isutc-p/\r\"
+    interact
+    "
+}
+
+# Execute the function
+execute_sftp_commands
+
+then Save this script in a file, for example, sftp_script.sh. Then make it executable by running:
+chmod +x sftp_script.sh
+
+Make sure you have expect installed on your Ubuntu system. You can install it using:
+
+sudo apt-get install expect
+
+
+======================================this:::::modified
+
+#!/bin/bash
+
+# Function to execute commands via SFTP
+execute_sftp_commands() {
+  # Parse the date parameter
+  backup_date=$1
+
+  # Login to the SFTP server
+  echo "Logging in to SFTP server..."
+  expect -c "
+  spawn sftp dsedev@192.168.0.169
+  expect \"Password:\"
+  send \"devs#LimeAA1989\r\"
+  expect \"sftp>\"
+  send \"cd /var/backups/ambientes/fenix/fenix-isutc-p/\r\"
+  expect \"sftp>\"
+  send \"ls\r\"
+  expect \"sftp>\"
+  send \"get fenix_prod_backup_${backup_date}.tar.gz\r\"
+  expect \"sftp>\"
+  send \"exit\r\"
+  interact
+  "
+}
+
+# Check if date parameter is provided
+if [ -z "$1" ]; then
+  echo "Please provide the date parameter in the format YYYYMMDD."
+  exit 1
+fi
+
+# Execute the function with the provided date parameter
+execute_sftp_commands "$1"
+save it.
+
+to run u need to put the backup date that u wanna get ex:
+
+./name_of_the_scrip 20240402
