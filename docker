@@ -113,6 +113,32 @@ Remember to replace your_domain_or_ip with the actual domain or IP address where
 These are general steps, and your setup may vary depending on your specific Docker and Apache configurations. If you encounter any issues, check the error logs for both Apache and PhpMyAdmin 
 for more information on what might be going wrong.
 
+6. if wanna get the multiple select server with diference port: just do
+
+//Default server (index 1)
+$count =1;
+
+$cfg['Servers'][$count]['host'] = '127.0.0.1';
+$cfg['Servers'][$count]['port'] = '3308';
+$cfg['Servers'][$count]['user'] = 'root';
+$cfg['Servers'][$count]['password'] = 'problematic';
+
+//First additional server (index 1)
+$count++;
+$cfg['Servers'][$count]['host'] = '127.0.0.1';
+$cfg['Servers'][$count]['port'] = '3307';
+$cfg['Servers'][$count]['user'] = 'root';
+$cfg['Servers'][$count]['password'] = 'pproblematic';
+
+// Second additional server (index 2)
+$count++;
+$cfg['Servers'][$count]['host'] = '127.0.0.1';
+$cfg['Servers'][$count]['port'] = '33010';
+$cfg['Servers'][$count]['user'] = 'root';
+$cfg['Servers'][$count]['password'] = 'pproblematic';
+
+
+
 
 
 
