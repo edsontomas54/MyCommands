@@ -151,3 +151,37 @@ save it.
 to run u need to put the backup date that u wanna get ex:
 
 ./name_of_the_scrip 20240402
+
+
+
+=======================================================================Kill Process
+
+Find the AnyDesk Process:
+
+Use the ps or pgrep command to find the process ID (PID) of the AnyDesk process.
+bash
+pgrep anydesk
+Alternatively, you can use the ps aux command and grep for AnyDesk:
+bash
+Copy code
+ps aux | grep anydesk
+This will list the processes related to AnyDesk and their corresponding PIDs.
+Kill the AnyDesk Process:
+
+Use the kill command followed by the PID you found. For example, if the PID is 1234, you would use:
+bash
+kill 1234
+If the process does not terminate with the kill command, you can use the -9 option to forcefully kill it:
+bash
+kill -9 1234
+If you want to kill all AnyDesk processes at once, you can use pkill:
+bash
+pkill anydesk
+Or to forcefully kill all AnyDesk processes:
+bash
+pkill -9 anydesk
+Verify the Process is Terminated:
+
+To ensure that the AnyDesk process is no longer running, you can check again using:
+bash
+pgrep anydesk
