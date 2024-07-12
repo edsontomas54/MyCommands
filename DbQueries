@@ -2,3 +2,11 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE role_user;
 DROP TABLE roles;
 SET FOREIGN_KEY_CHECKS=1;
+in Seed php
+
+use Illuminate\Support\Facades\DB;
+
+DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+DB::statement('DROP TABLE role_user;');
+DB::statement('DROP TABLE roles;');
+DB::statement('SET FOREIGN_KEY_CHECKS=1;');
