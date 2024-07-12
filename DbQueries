@@ -1,8 +1,10 @@
 SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE role_user;
 DROP TABLE roles;
-SET FOREIGN_KEY_CHECKS=1;
-in Seed php
+SET FOREIGN_KEY_CHECKS=1;,
+
+
+in Facades php
 
 use Illuminate\Support\Facades\DB;
 
