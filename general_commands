@@ -1,0 +1,6 @@
+system's logs
+sudo tail -f /var/lag/syslog
+
+Kernel Messages
+
+sudo tail -f /var/log/kern.log
