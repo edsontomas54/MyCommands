@@ -12,3 +12,7 @@ DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 DB::statement('DROP TABLE role_user;');
 DB::statement('DROP TABLE roles;');
 DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+
+//to delete tables with references
+SET FOREIGN_KEY_CHECKS = 1;
