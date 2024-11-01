@@ -185,3 +185,18 @@ Verify the Process is Terminated:
 To ensure that the AnyDesk process is no longer running, you can check again using:
 bash
 pgrep anydesk
+
+
+
+
+
+====================================>>>>>>>>>
+
+In case you need characters, here are a few examples:
+
+á: \u00E1
+é: \u00E9
+í: \u00ED
+ó: \u00F3
+ú: \u00FA
+ç: \u00E7
