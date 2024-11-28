@@ -8,3 +8,66 @@ Clear all cache: php artisan optimize:clear
 Clear the Composer cache: composer dump-autoload 
 You can also clear the cache programmatically from within your application by using the Cache facade. For example, use Illuminate\Support\Facades\Cache; Cache::flush();. 
 If you want to clear a specific store or cached items with specific tags, you can pass parameters to the command. For example, php artisan cache:clear --store=redis or php artisan cache:clear --tags=tag1,tag2. 
+
+
+
+====================+>>>>>>>>>>>>> Logs
+
+Steps to View Laravel Logs
+Navigate to the Log File
+Go to your project directory and locate the storage/logs/laravel.log file:
+
+bash
+cd /path/to/your/project
+cat storage/logs/laravel.log
+This will display the latest log entries.
+
+Use a Text Editor
+Open the laravel.log file with a text editor:
+bash
+nano storage/logs/laravel.log
+Or use any code editor like VSCode or Sublime Text.
+
+Use Tail for Real-Time Logs
+If you want to monitor logs in real-time, use the tail command:
+tail -f storage/logs/laravel.log
+
+
+Laravel stores logs in the storage/logs directory. By default, the log file is named laravel.log. You can access it as follows:
+
+Steps to View Laravel Logs
+Navigate to the Log File
+Go to your project directory and locate the storage/logs/laravel.log file:
+
+bash
+cd /path/to/your/project
+cat storage/logs/laravel.log
+This will display the latest log entries.
+
+Use a Text Editor
+Open the laravel.log file with a text editor:
+
+bash
+Copy code
+nano storage/logs/laravel.log
+Or use any code editor like VSCode or Sublime Text.
+
+Use Tail for Real-Time Logs
+If you want to monitor logs in real-time, use the tail command:
+
+bash
+Copy code
+tail -f storage/logs/laravel.log
+Check for Errors
+Look for the Database connection error or similar messages that you logged in your mount() method.
+
+Alternative: Use Laravel Telescope (Optional)
+Laravel Telescope provides an interface to view logs and debug information directly in the browser.
+
+Install Telescope:
+bash
+Copy code
+composer require laravel/telescope
+php artisan telescope:install
+php artisan migrate
+Access Telescope: Visit /telescope/logs in your browser to view logs.
