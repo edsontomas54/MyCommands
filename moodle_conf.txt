@@ -1,2 +1,7 @@
+
+plugins:
+https://moodle.org/plugins/?q=theme
+
+
 To Edit the theme
 http://localhost/admin/upgradesettings.php?
