@@ -74,3 +74,8 @@ composer require laravel/telescope
 php artisan telescope:install
 php artisan migrate
 Access Telescope: Visit /telescope/logs in your browser to view logs.
+
+
+
+Laravel yoeunes-toastr
+https://laravel-news.com/package/yoeunes-toastr
