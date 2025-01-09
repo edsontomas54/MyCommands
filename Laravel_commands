@@ -61,6 +61,9 @@ tail -f storage/logs/laravel.log
 Check for Errors
 Look for the Database connection error or similar messages that you logged in your mount() method.
 
+To add logs:
+  \Log::info('Increment method called');
+==========================
 Alternative: Use Laravel Telescope (Optional)
 Laravel Telescope provides an interface to view logs and debug information directly in the browser.
 
