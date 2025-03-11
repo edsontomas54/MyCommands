@@ -21,3 +21,81 @@ SET FOREIGN_KEY_CHECKS = 1;
 SHOW VARIABLES LIKE 'max_allowed_packet';
 
 SET GLOBAL max_allowed_packet=1073741824;
+
+
+
+
+// TO FIND IN MYSQL THE TABLES THAT STORE CERTEIN VALUE:
+
+DELIMITER //
+
+CREATE PROCEDURE FindValueInAllTables(IN searchValue BIGINT UNSIGNED)
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE tableName VARCHAR(255);
+    DECLARE columnName VARCHAR(255);
+    DECLARE curTables CURSOR FOR
+        SELECT TABLE_NAME
+        FROM INFORMATION_SCHEMA.TABLES
+        WHERE TABLE_SCHEMA = DATABASE() AND TABLE_TYPE = 'BASE TABLE'; -- Or 'TABLE'
+
+    DECLARE curColumns CURSOR FOR
+        SELECT COLUMN_NAME
+        FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = tableName;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    -- Create a temporary table to store results
+    CREATE TEMPORARY TABLE IF NOT EXISTS Results (
+        TableName VARCHAR(255),
+        ColumnName VARCHAR(255)
+    );
+
+    OPEN curTables;
+
+    read_tables: LOOP
+        FETCH curTables INTO tableName;
+        IF done THEN
+            LEAVE read_tables;
+        END IF;
+
+        SET done = FALSE; -- Reset for column cursor
+
+        OPEN curColumns;
+
+        read_columns: LOOP
+            FETCH curColumns INTO columnName;
+            IF done THEN
+                LEAVE read_columns;
+            END IF;
+
+            SET @sql = CONCAT('SELECT COUNT(*) INTO @count FROM `', tableName, '` WHERE `', columnName, '` = ?');
+            PREPARE stmt FROM @sql;
+            SET @searchVal = searchValue;
+            EXECUTE stmt USING @searchVal;
+            DEALLOCATE PREPARE stmt;
+
+            IF @count > 0 THEN
+                INSERT INTO Results (TableName, ColumnName) VALUES (tableName, columnName);
+            END IF;
+        END LOOP read_columns;
+
+        CLOSE curColumns;
+        SET done = FALSE;
+
+    END LOOP read_tables;
+
+    CLOSE curTables;
+
+    -- Return the results
+    SELECT * FROM Results;
+
+    -- Clean up the temporary table
+    DROP TEMPORARY TABLE Results;
+
+END //
+
+DELIMITER ;
+
+FIRST RUN THIS DELIMITER THE CALL IT BY: CALL FindValueInAllTables(849140804222983); //PUT THE VALUE AS PARAM
