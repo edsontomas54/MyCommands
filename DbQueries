@@ -99,3 +99,91 @@ END //
 DELIMITER ;
 
 FIRST RUN THIS DELIMITER THE CALL IT BY: CALL FindValueInAllTables(849140804222983); //PUT THE VALUE AS PARAM
+
+
+
+
+ERROR 1153 (08S01): Got a packet bigger than 'max_allowed_packet' bytes
+ERROR 2013 (HY000): Lost connection to MySQL server during query
+No connection. Trying to reconnect...
+Connection id:    1825
+Current database: fenix20250312
+
+
+Resolution:
+
+1. Increase max_allowed_packet in MySQL Configuration
+You need to increase the max_allowed_packet size in the MySQL server configuration. Since you're using MySQL 5.5 in a Docker container, follow these steps:
+
+a. Edit MySQL Configuration File
+Locate the MySQL configuration file (my.cnf or my.ini). In Docker, this file is typically located at /etc/mysql/my.cnf or /etc/my.cnf.
+
+If the file doesn’t exist, you may need to create it.
+
+Add or update the following lines in the [mysqld] section:
+
+ini
+Copy
+[mysqld]
+max_allowed_packet = 64M
+You can adjust the value (e.g., 64M, 128M, 256M, etc.) depending on your needs.
+
+b. Restart MySQL Server
+After updating the configuration, restart the MySQL server to apply the changes.
+
+If you're using Docker, you can restart the container:
+
+bash
+Copy
+docker restart <container_name_or_id>
+2. Set max_allowed_packet Temporarily (Without Restart)
+If you don’t want to restart the MySQL server, you can temporarily set the max_allowed_packet size for the current session:
+
+sql
+SET GLOBAL max_allowed_packet = 64 * 1024 * 1024;
+However, this change will not persist after a server restart.
+
+3. Check the Client max_allowed_packet
+The client (e.g., MySQL CLI, MySQL Workbench, or your application) also has a max_allowed_packet setting. Ensure that the client’s setting matches or exceeds the server’s setting.
+
+For example, if you're using the MySQL CLI, you can specify the max_allowed_packet size when connecting:
+
+mysql --max_allowed_packet=64M -u username -p
+4. Verify the Changes
+After making the changes, verify the max_allowed_packet size:
+
+sql
+SHOW VARIABLES LIKE 'max_allowed_packet';
+This should return the updated value.
+
+5. Re-run Your Query
+Once the max_allowed_packet size is increased, re-run your query or operation. The error should no longer occur.
+
+6. Debugging Connection Issues
+If you’re still encountering connection issues (ERROR 2013 (HY000): Lost connection to MySQL server during query), it could be due to network instability or server timeouts. You can increase the wait_timeout and interactive_timeout settings in the MySQL configuration:
+
+[mysqld]
+wait_timeout = 28800
+interactive_timeout = 28800
+
+
+Restart the MySQL server after making these changes.
+
+7. Docker-Specific Considerations
+If you’re running MySQL in Docker, ensure that the container has sufficient resources (e.g., memory and CPU). You can adjust the container’s resource limits using Docker’s --memory and --cpus flags.
+
+For example:
+docker run -d --name mysql5.5 \
+  -e MYSQL_ROOT_PASSWORD=yourpassword \
+  --memory="2g" --cpus="2" \
+  mysql:5.5
+Summary
+
+Increase max_allowed_packet in the MySQL configuration file.
+
+Restart the MySQL server or container.
+
+Verify the changes and re-run your query.
+
+Let me know if you need further assistance!
+
