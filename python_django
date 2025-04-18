@@ -47,3 +47,18 @@ pyenv virtualenv 3.8.10 myenv (replace with your version and desired env name)
 Activate/deactivate virtual environments:
 Activate: pyenv activate myenv
 Deactivate: pyenv deactivate
+
+
+4. Delete the existing Python version, and recreate (be careful)
+  pyenv uninstall 3.8.18
+  pyenv install 3.8.18  # Only if it uninstalled the base version too
+  pyenv virtualenv 3.8.18
+
+
+5.To delete the virtualenv
+Make sure you're not using it first
+pyenv deactivate
+
+pyenv uninstall oldproject-env
+
+
