@@ -1,0 +1,49 @@
+
+To use pyenv in Ubuntu, first install it and then configure your shell to recognize it. Then, 
+you can install and manage Python versions using pyenv install, pyenv global, and pyenv local. 
+Finally, you can switch between versions using pyenv activate. 
+
+1. Installation:
+
+Update package list: sudo apt update 
+Install required dependencies: sudo apt install -y make build-essential libssl-dev zlib1g-dev ... (Refer to for a complete list) 
+
+Install pyenv: curl -fsSL https://pyenv.run | bash 
+
+Configure shell: Add the following to your ~/.bashrc (or appropriate shell config file): 
+
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+
+Refresh shell: exec "$SHELL" or open a new terminal 
+2. Managing Python Versions:
+List available versions: pyenv install --list 
+Install a version: pyenv install 3.8.10 (replace with your desired version) 
+
+Set a global default: pyenv global 3.8.10
+
+Set a local default (for a specific project):
+Navigate to your project directory.
+
+pyenv local 3.8.10 (or the specific version you want) 
+A .python-version file will be created in that directory. 
+
+Global: pyenv global 3.8.10
+
+Local: Navigate to the project directory, and the .python-version file will automatically activate the corresponding version. 
+
+3. Using Python:
+Check current version: python --version
+Run a script: python your_script.py 
+
+Configure:
+Add pyenv-virtualenv to your shell configuration (e.g., ~/.bashrc) with the line eval "$(pyenv init - --bare)"
+
+Create virtual environments:
+pyenv virtualenv 3.8.10 myenv (replace with your version and desired env name)
+
+
+Activate/deactivate virtual environments:
+Activate: pyenv activate myenv
+Deactivate: pyenv deactivate
