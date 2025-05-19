@@ -248,3 +248,110 @@ bash
 Copy code
 composer install
 This will install the versions already defined in your composer.lock file, without making any updates.
+
+
+
+====>>>>>PHPmyadmin======With docker ==========>>>
+install end config phpmyadmin with apache2
+Install PHP Module for Apache: Ensure that the PHP module for Apache is installed. You can install it using the following command:
+       bashCopy code
+       sudo apt-get install libapache2-mod-php8.1
+       After installing the module, enable it:
+       bashCopy code
+       sudo a2enmod php8.1
+       Finally, restart Apache:
+       bashCopy code
+       sudo systemctl restart apache2
+    1. Verify PHP Installation: Double-check that PHP 8.1 is installed and working properly:
+       bashCopy code
+       php -v
+       The output should confirm that PHP 8.1 is installed. If not, install PHP 8.1 using:
+       bashCopy code
+       sudo apt-get install php8.1
+       Ensure that Apache recognizes the PHP version:
+       bashCopy code
+       sudo a2dismod php
+       sudo a2enmod php8.1
+       sudo systemctl restart apache2
+    2. Check Apache Configuration: Verify that the Apache configuration is set up to handle PHP files. Open the Apache configuration file:
+       bashCopy code
+       sudo nano /etc/apache2/apache2.conf
+       Look for lines similar to:
+       apacheCopy code
+       <FilesMatch \.php$>
+           SetHandler application/x-httpd-php
+       </FilesMatch>
+       If not present, add these lines. Save the file and restart Apache.
+    3. File Permissions: Ensure that the file permissions are set correctly for your PHP file. Apache needs read access:
+       bashCopy code
+       sudo chmod 644 /path/to/abc.php can be any file to test php is woring with apache or not 
+       Also, ensure the file is owned by the Apache user:
+       bashCopy code
+       sudo chown www-data:www-data /path/to/abc.php
+    4. Check for Errors: Review the Apache error log for any PHP-related errors:
+       bashCopy code
+       tail -f /var/log/apache2/error.log
+       Attempt to access your PHP file and check for new error messages in the log.
+After completing these steps, your PHP file should be executed by Apache without any issues. If you encounter further problems or have additional details, feel free to provide them for more specific assistance.
+
+
+====>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Now ensure ur docker database config' in your phpMyadmin
+
+    1. Ensure Docker Containers are Running: Make sure your MySQL Docker container is running and accessible. You should have the necessary credentials 
+(such as host, username, password, and port) for connecting PhpMyAdmin to your MySQL database.
+    2. Install PhpMyAdmin: You can install PhpMyAdmin via apt. Ensure that it's properly installed and configured on your Apache server.
+       bashCopy code
+       sudo apt-get update
+       sudo apt-get install phpmyadmin
+       Follow the on-screen instructions during the installation process. Make sure to enable the Apache2 configuration when prompted.
+    3. Configure PhpMyAdmin: Once PhpMyAdmin is installed, you may need to configure it to connect to your Dockerized MySQL instance. Edit the PhpMyAdmin configuration file, 
+usually located at /etc/phpmyadmin/config.inc.php. Look for the database configuration section and update the values accordingly:
+       phpCopy code
+
+       $cfg['Servers'][$i]['host'] = 'docker_mysql_host';
+       $cfg['Servers'][$i]['port'] = 'docker_mysql_port';
+       $cfg['Servers'][$i]['user'] = 'docker_mysql_user';
+       $cfg['Servers'][$i]['password'] = 'docker_mysql_password';
+
+       Replace docker_mysql_host, docker_mysql_port, docker_mysql_user, and docker_mysql_password with the appropriate values for your Dockerized MySQL container.
+    4. Restart Apache: After making changes to the PhpMyAdmin configuration, restart the Apache web server to apply the changes.
+       bashCopy code
+       sudo service apache2 restart
+    5. Access PhpMyAdmin: Open your web browser and navigate to http://localhost/phpmyadmin or http://your_domain_or_ip/phpmyadmin. Log in with the MySQL credentials you provided in the 
+configuration file.
+Remember to replace your_domain_or_ip with the actual domain or IP address where your Apache server is running.
+These are general steps, and your setup may vary depending on your specific Docker and Apache configurations. If you encounter any issues, check the error logs for both Apache and PhpMyAdmin 
+for more information on what might be going wrong.
+
+6. if wanna get the multiple select server with diference port: just do
+
+//Default server (index 1)
+$count =1;
+
+$cfg['Servers'][$count]['host'] = '127.0.0.1';
+$cfg['Servers'][$count]['port'] = '3308';
+$cfg['Servers'][$count]['user'] = 'root';
+$cfg['Servers'][$count]['password'] = 'problematic';
+
+//First additional server (index 1)
+$count++;
+$cfg['Servers'][$count]['host'] = '127.0.0.1';
+$cfg['Servers'][$count]['port'] = '3307';
+$cfg['Servers'][$count]['user'] = 'root';
+$cfg['Servers'][$count]['password'] = 'pproblematic';
+
+// Second additional server (index 2)
+$count++;
+$cfg['Servers'][$count]['host'] = '127.0.0.1';
+$cfg['Servers'][$count]['port'] = '33010';
+$cfg['Servers'][$count]['user'] = 'root';
+$cfg['Servers'][$count]['password'] = 'pproblematic';
+
+
+
+
+
+
+
+ex: on bin
+ln -s /home/edsondev/Commands/mysql8.1.sh /usr/bin/mysql8.1
