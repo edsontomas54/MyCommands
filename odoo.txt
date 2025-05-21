@@ -1,1 +1,27 @@
 
+See `pyenv help <command>' for information on a specific command.
+For full documentation, see: https://github.com/pyenv/pyenv#readme
+edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0$ pyenv --verson
+pyenv: no such command `--verson'
+edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0$ pyenv --v
+pyenv: no such command `--v'
+edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0$ pyenv versions
+* system (set by /home/edsondev/.pyenv/version)
+  3.8.18
+  3.8.18/envs/warehouse-env
+  3.8.18/envs/warehouse_env_test
+  3.10.12
+  3.10.12/envs/odoo18-elearning-env
+  3.11.12
+  3.11.12/envs/odoo18-elearning-venv
+  odoo18-elearning-env --> /home/edsondev/.pyenv/versions/3.10.12/envs/odoo18-elearning-env
+  odoo18-elearning-venv --> /home/edsondev/.pyenv/versions/3.11.12/envs/odoo18-elearning-venv
+  warehouse-env --> /home/edsondev/.pyenv/versions/3.8.18/envs/warehouse-env
+  warehouse_env_test --> /home/edsondev/.pyenv/versions/3.8.18/envs/warehouse_env_test
+edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0$ source doo18-elearning-venv
+bash: doo18-elearning-venv: No such file or directory
+edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0$ source activate  doo18-elearning-venv
+pyenv-virtualenv: version `doo18-elearning-venv' is not a virtualenv
+edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0$ l
+addons/          COPYRIGHT       debian/       doc/     MANIFEST.in  odoo/      odoo.conf  requirements.txt  setup/     setup.py
+CONTRIBUTING.md  custom_addons/  dependecies/  LICENSE  note.txt     odoo-bin*  README.md  SECURITY.md       setup.cfg
