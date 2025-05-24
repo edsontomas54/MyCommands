@@ -29,6 +29,31 @@ return [
 ];
 
 
+Implementing MOVITEL USSD PUSH API in Laravel
+Based on the specification document, I'll guide you through implementing the MOVITEL USSD PUSH API in your Laravel project. This implementation will cover the main functionalities including sending USSD push messages, checking transaction status, disbursements, and callbacks.
+
+1. Setup Configuration
+First, let's create a configuration file for the API credentials and endpoints.
+
+php
+// config/movitel.php
+return [
+    'wsdl_url' => env('MOVITEL_WSDL_URL', 'https://xxx.xxx.xxx.xxx:yyyy/BCCSGateway/BCCSGateway?wsdl'),
+    'username' => env('MOVITEL_USERNAME'),
+    'password' => env('MOVITEL_PASSWORD'),
+    'partner_code' => env('MOVITEL_PARTNER_CODE'),
+    'key' => env('MOVITEL_KEY'),
+    'callback_url' => env('MOVITEL_CALLBACK_URL'),
+];
+Add these to your .env file:
+
+MOVITEL_WSDL_URL=https://xxx.xxx.xxx.xxx:yyyy/BCCSGateway/BCCSGateway?wsdl
+MOVITEL_USERNAME=your_username
+MOVITEL_PASSWORD=your_password
+MOVITEL_PARTNER_CODE=your_partner_code
+MOVITEL_KEY=your_private_key
+MOVITEL_CALLBACK_URL=https://yourdomain.com/api/movitel/callback
+
 =============================>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>
 
 
