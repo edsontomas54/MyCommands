@@ -128,3 +128,96 @@ sudo systemctl restart nginx
 ```
 
 
+```
+
+
+### CONFIGURANDO Dominio NGINX
+```sh
+# etshopper.com Deployment Guide
+
+This document explains how to deploy your Laravel application on AWS EC2 with Nginx and connect it to your domain managed by Hostinger.
+
+## ✅ Step 1: Update DNS Records on Hostinger
+
+**Goal:** Point your domain to the EC2 server.
+
+1. **Log into Hostinger DNS management.**
+2. Locate the **A Records** for:
+   - `@` (root domain)
+   - `www`
+3. Update both to your EC2 public IP: 44.203.95.103
+
+
+Example:
+
+| Type | Name | Value           | TTL     |
+|------|------|-----------------|---------|
+| A    | @    | 44.203.95.103   | Default |
+| A    | www  | 44.203.95.103   | Default |
+
+4. **Save changes.**
+5. **Verify propagation:**
+
+```bash
+dig +short etshopper.com
+44.203.95.103
+
+
+Step 2: Nginx Configuration:
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name etshopper.com www.etshopper.com;
+
+    root /var/www/etshopper/public;
+    index index.php index.html;
+
+    charset utf-8;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    error_page 404 /index.php;
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+        fastcgi_hide_header X-Powered-By;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}
+
+
+sudo nginx -t
+sudo systemctl reload nginx
+
+
+
+Optional: Enable HTTPS with Certbot
+
+Install Certbot:
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
+
+Run Certbot:
+sudo certbot --nginx -d etshopper.com -d www.etshopper.com
+
+
+---
+
+---
