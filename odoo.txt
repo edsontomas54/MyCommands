@@ -25,3 +25,8 @@ pyenv-virtualenv: version `doo18-elearning-venv' is not a virtualenv
 edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0$ l
 addons/          COPYRIGHT       debian/       doc/     MANIFEST.in  odoo/      odoo.conf  requirements.txt  setup/     setup.py
 CONTRIBUTING.md  custom_addons/  dependecies/  LICENSE  note.txt     odoo-bin*  README.md  SECURITY.md       setup.cfg
+
+
+===================================
+
+./odoo-bin -c  odoo.conf
