@@ -28,5 +28,58 @@ CONTRIBUTING.md  custom_addons/  dependecies/  LICENSE  note.txt     odoo-bin*  
 
 
 ===================================
+starting a new database: ./odoo-bin -c odoo.conf -d odoo_elearning008 -i base --stop-after-init
 
+========= =========================
+-d odoo_elearning008: specifies the database name
+
+-i base: tells Odoo to install the base module (minimum needed to start)
+
+--stop-after-init: Odoo will stop after initialization — useful to just set up the DB without starting the server
+
+====================================================================
 ./odoo-bin -c  odoo.conf
+
+
+
+
+
+others==============================================================
+
+[options]
+addons_path =/home/edsondev/Documents/builds/odoo_system/odoo_18_default/odoo-18.0_elearning/addons
+
+db_host = 127.0.0.1
+db_port = 5433
+db_user = odoo
+db_password = problematic
+db_name= odoo_elearning005
+logfile = /var/log/odoo/odoo.log
+admin_passwd = $pbkdf2-sha512$600000$z/nfu/e.937PmdN6D0GodQ$/6Nn88R27SKdbgAkgGHhmFpPxQ2jZXUVr6IQU/AyBS3cnXwTZJCRfpplMdoa3u5ItsaDes7VuxhQyS1uglp2Nw
+#Databeses:odoo_elearning003_back1 =<Mpesa and shop actived>
+
+===========================================================================
+
+
+pip install ./portal-sdk.tar.gz
+
+edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0_elearning$ pyenv virtualenv odoo-18.o_elearning
+Looking in links: /tmp/tmp38qrt9li
+Requirement already satisfied: setuptools in /home/edsondev/.pyenv/versions/odoo-18.o_elearning/lib/python3.8/site-packages (56.0.0)
+Requirement already satisfied: pip in /home/edsondev/.pyenv/versions/odoo-18.o_elearning/lib/python3.8/site-packages (23.0.1)
+edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0_elearning$ source activate odoo-18.o_elearning
+pyenv-virtualenv: activate odoo-18.o_elearning
+(odoo-18.o_elearning) edsondev@edsondev-Inspiron-3501:~/Documents/builds/odoo_system/odoo_18_default/odoo-18.0_elearning$ 
+
+
+
+
+pip install -r requirements.txt 
+
+
+rm -r /home/edsondev/.pyenv/versions/odoo-18.o_elearning/
+
+
+pyenv virtualenv 3.11.12 odoo-18.0_elearning_venv
+
+source activate odoo_elearing_env
