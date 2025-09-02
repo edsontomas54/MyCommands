@@ -83,3 +83,11 @@ rm -r /home/edsondev/.pyenv/versions/odoo-18.o_elearning/
 pyenv virtualenv 3.11.12 odoo-18.0_elearning_venv
 
 source activate odoo_elearing_env
+
+
+=========================
+Creating new odoo 18 model:
+
+./odoo-bin scaffold payment_mpesa_custom addons/
+
+
